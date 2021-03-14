@@ -1,0 +1,86 @@
+\documentclass[12pt]{article}
+\usepackage[spanish, english, es-tabla]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[left = 2cm, right = 2cm, bottom = 2cm, top = 3cm]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\begin{document}
+	\selectlanguage{spanish}
+	\title{AllWize \\ \large Hackathon 2021}
+	\author{Enrique Fernández Sánchez}
+	
+	%% EDITAR PARA SEGUIMIENTO DE VERSIONES
+	%\date{Revisión 19 Febrero 2021}
+	
+	\maketitle
+	\tableofcontents
+	
+	\pagebreak
+	
+	% https://github.com/AllWize/allwize-training/tree/master/videos
+	\section{Context. LPWAN}
+	\noindent En el sentido de palabras topics, se mezcla en general lo que tiene que ver con Smar Citys, I4.0, IoT... Pero lo más importante es tener en claro lo que queremos solucionar. Es importante centrar el objetivo para solventar un problema. Necesidades/problemas --> soluciones específicas.
+	
+	\noindent IoT tiene origen en sensores meteorológicos, información remota, etc.
+	
+	\noindent LPWAN diseñadas para recurrir territorios muy grandes pero con bajo consumo. 
+	
+	\section{Retos}
+	\begin{itemize}
+		\item Security. Evitar MiM. Uso de TLS. 
+		\item Autonomy. No cambiar baterías, o si las cambias que sea con un ciclo mayor. Búsqueda de duración de baterías de 10 años o que hagan harvesting de luz solar.
+		\item Conectivity.
+		\item Interoperability
+		\item Awareness. Privacidad.
+		\item Big data. Recopilación de datos. Solo recogemos la información necesaria.
+		\item Business model. Monetización y sostenibilidad de la aplicación. \textbf{importante}
+		\item Scalability. Escalabilidad de la solución. Optimiazción.
+	\end{itemize}
+
+	\section{Landscape}
+	\noindent Importante ver las diferentes diferenciaciones en niveles (verticales y horizontales).
+	
+	% https://46eybw2v1nh52oe80d3bi91u-wpengine.netdna-ssl.com/wp-content/uploads/2016/03/Internet-of-Things-2016.png
+	
+	\pagebreak
+	\section{Caja del hackathon.}
+	\subsection{Placas controladoras.}
+	\begin{itemize}
+		\item AllWize K2. Arduino SAMD. 
+		\item Carrier board para K2 (sin batería).
+		\item AllWize K1. Wemos 8266 R1 D2 mini 
+		\item x2 Antenas monopolo de cuarto de onda de 168MHz.
+		\item IPEX a SMA
+		\item x2 Cables micro USB
+		\item Cables grove
+	\end{itemize}
+	\subsection{Sensores incluidos.}
+	\begin{itemize}
+		\item Multichannel Gas Sensor v2. I2C. 4 Variables.
+		
+		\item Barometer Sensor (BME280). Presión atmosferica, altitud, temperatura, humedad.
+		
+		\item Dust Sensor. Air quality
+		
+		\item Slide potenciometer 10k ohms
+		
+		\item RGB Led. WS2813 mini
+		
+		\item OLED display. 0.96"
+		
+		\item Hall sensor. Magnetico.
+		
+		\item Touch Sensor.
+		
+		\item Encoder.
+		
+		\item Loudness sensor.
+		
+		\item Air quality sensor.
+		
+		\item Sound sensor.
+	\end{itemize}
+	
+\end{document}
