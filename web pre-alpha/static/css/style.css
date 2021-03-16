@@ -920,7 +920,7 @@ Home Section style
 ==================*/
 
 .home{
-    background: url(../img/test_homebg.png) no-repeat top center;
+    background: url(../img/homebg2.png) no-repeat bottom center;
     background-size: cover;
     position: relative;
 }
