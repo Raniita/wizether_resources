@@ -9,8 +9,8 @@
 // ----------------------------
 // WiFi credentials
 // ----------------------------
-#define WIFI_SSID      "Ranii"
-#define WIFI_PASSWORD  "ranimola2021"
+#define WIFI_SSID      ""
+#define WIFI_PASSWORD  ""
 
 // ----------------------------
 // Wize Radio connection

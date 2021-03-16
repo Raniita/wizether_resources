@@ -51,6 +51,9 @@
 #define PIN_AIRQUALITY A4
 #define PIN_TOUCH 0
 
+#define PIN_BATTERY A3
+#define BATTERY_TRIGGER 4
+
 // ----------------------------
 // Declarations
 // ----------------------------
@@ -105,6 +108,10 @@ void sensorSetup() {
   // Touch Sensor
   pinMode(PIN_TOUCH, INPUT);
   attachInterrupt(digitalPinToInterrupt(PIN_TOUCH), debounceInterrupt, RISING);
+
+  // Battery Monitor
+  pinMode(BATTERY_TRIGGER, OUTPUT);
+  analogReference(AR_DEFAULT); 
 }
 
 // ----------------------------
@@ -161,6 +168,22 @@ int getAirQuality() {
   }
 
   return value;
+}
+
+float readBattery(){
+  digitalWrite(BATTERY_TRIGGER, LOW);           // Lo pone en la documentación de la placa Carrier
+  delay(50);
+  
+  int volts = analogRead(PIN_BATTERY);
+  //DEBUG_SERIAL.print("[BATTERY] ");
+  //DEBUG_SERIAL.println(volts);
+  
+  float real_volts = volts * 2.0 * (3.3 / 1023.0);
+  DEBUG_SERIAL.print("[BATTERY] Monitoring battery: ");
+  DEBUG_SERIAL.print(real_volts);
+  DEBUG_SERIAL.println(" V");
+  
+  return real_volts;
 }
 
 bool readTouch(){
@@ -417,6 +440,8 @@ void loop() {
   last_air = getAirQuality();
   payload.addDigitalInput(6, last_air);         // no lo detecta el GW
 
+  //readBattery();
+
   // Update Display
   switch(act_page){
     case 0:
@@ -441,6 +466,6 @@ void loop() {
   wizeSend(payload.getBuffer(), payload.getSize());
   //interrupts();
 
-  // Delay responses for 20 seconds [may be sleep arduino]
-  delay(20000);
+  // Delay responses for 15 minutes [may be sleep arduino]
+  delay(900000);
 }
