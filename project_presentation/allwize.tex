@@ -4,17 +4,42 @@
 \usepackage[left = 2cm, right = 2cm, bottom = 2cm, top = 3cm]{geometry}
 \usepackage{amsmath, amssymb}
 \usepackage{graphicx}
-\usepackage{hyperref}
+\usepackage [hidelinks]{hyperref}
+\usepackage[usenames,dvipsnames]{xcolor}
+
+%%SETUP FOR PDF PROPERTIES%%
+\hypersetup{
+	pdftitle={Hackathon AllWize: WizeTher},
+	pdfsubject={Telecomunicaciones},
+	pdfauthor={Enrique Fernández Sánchez, Lucía Francoso Fernández},
+	pdfkeywords={Wize, AllWize, WizeTher, calidad aire, openData}
+} 
+
+%% SETUP FOR THE LINKS%%
+\hypersetup{
+	colorlinks,
+    linkcolor=black,
+	citecolor={blue!50!black},
+	urlcolor=cyan
+}
 
 \begin{document}
 	\selectlanguage{spanish}
-	\title{AllWize \\ \large Hackathon 2021}
-	\author{Enrique Fernández Sánchez}
+	
+	%centrar titulo y autores
+	
+	\title{\huge Hackathon AllWize \\ \LARGE \textit{WizeTher}\\}
+	\author{\small Enrique Fernández Sánchez \\ \small Lucía Francoso Fernández}
+
+	%quitar numeracion de la portada
 	
 	%% EDITAR PARA SEGUIMIENTO DE VERSIONES
 	%\date{Revisión 19 Febrero 2021}
 	
 	\maketitle
+	
+	\pagebreak
+	
 	\tableofcontents
 	
 	\pagebreak
@@ -82,5 +107,53 @@
 		
 		\item Sound sensor.
 	\end{itemize}
+
+	\section[Identificación de necesidades]{Identificación de necesidades}
+	
+	Una vez analizado el material que se nos ha proporcionado, y reflexionado acerca de la tecnología a emplear (en este caso, Wize), el siguiente paso fue hacer una investigación acerca del OpenData que ofrece el Ayuntamiento de Cartagena, así como de posibles líneas futuras que ha manifestado un interés en abarcar en cuanto al empleo de soluciones IoT con el objetivo de conseguir suficientes datos para toma de decisiones que conlleven una mejora en la calidad ambiental. \\
+	
+	\subsection{Calidad del aire}
+	
+	Así pues, encontramos un dashboard donde se reflejan los datos recopilados por diferentes estaciones, dentro de la zona del campo de Cartagena, relacionados con la calidad del aire. El link de acceso es el siguiente: 
+	\href{https://www.cartagena.es/calidad_aire.asp}{Calidad del Aire (Campo de Cartagena)}. Dichas estaciones son, o se encuentran en: 
+	
+	\begin{itemize}
+		\item Estación de Alumbres
+		\item Estación de Escombreras
+		\item Estación de la Aljorra
+		\item Estación de Monpeán
+	\end {itemize}
+	
+	Por las gráficas que se muestran, podemos observar que cada estación realiza varias mediciones al día de diferentes gases contaminantes; a la vez que dicha gráfica con datos variantes a lo largo del día (de ayer, hoy o previsión para mañana, según seleccionemos), se muestra una tabla, donde intuimos que se muestra el valor medio de concentración de dicho gas contaminante en el aire. Sin embargo, no existe (o al menos, no hemos encontrado) un portal con OpenData donde descargar en archivo csv/excel estos datos, ni un histórico con datos recopilados en días anteriores al de la consulta (como decimos, sólo existe un dashboard con datos del día anterior, actual y previsión para el siguiente). \\
+	
+	\subsection{Ruido}
+	
+	% https://www.cartagena.es/plantillas/14b.asp?pt_idpag=1431
+		\href{https://www.cartagena.es/plantillas/14b.asp?pt_idpag=1431}{Portal de Transparencia del Ayto de Cartagena (Ciudad Sostenible)}
+	
+	Dentro del Portal de Transparencia del Ayto de Cartagena, en tanto a calidad ambiental, encontramos:
+	
+	\begin{itemize}
+		\item Dentro de infraestructuras, agua potable, agua reciclada y reutilizada, e impactos ambientales
+		\item Dentro de desarrollo sostenible, gases de efecto invernadero, niveles de calidad del aire (ya mencionado), medio natural, mapa de ruidos
+	\end{itemize} 
+
+Agua potable: un pdf de 2017 de una página
+Agua reciclada y reutilizada: un pdf de 2017 de una página
+Impactos ambientales: un pdf de una página "Iniciativas llevadas a cabo para mitigar los impactos ambientales de los productos y servicios"
+
+Gases de efecto invernadero: un pdf de 104 paginas "inventario de emisiones y plan de accion para la energia sostenible del municipio de Cartagena"
+
+Medio natural: %https://urbanismo.cartagena.es/medionatural/ no tiene na q ver, solo un pdf de 2010 sobre indicadores de sostenibilidad
+
+Mapa de ruidos: % https://urbanismo.cartagena.es/PortalUrbanismo/Paginas/65 en urbanismo no tienen informes ambientales
+
+		
+		\subsection{Líneas futuras}
+		
+		El ayuntamiento de Cartagena ha mostrado interés, desde la Concejalía de Ciudad Sostenible y Proyectos Europeos, por la monitorización de la calidad del aire, ruido y aforos peatonales.
+		
+		%https://murciaplaza.com/cartagena-estudia-la-calidad-del-aire-ruidos-y-aforos-para-reducir-el-impacto-climatico-y-la-movilidad-urbana
+		
 	
 \end{document}
