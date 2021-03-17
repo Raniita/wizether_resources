@@ -1,3 +1,23 @@
+.vscode/
+
+start.sh
+start_worker.sh
+update_pip.sh
+migrate.sh
+migrate_db.sh
+init_migrations.sh
+
+*.rdb
+
+*.db
+*.sqlite
+
+venv/
+env/
+
+*.pyc
+__pycache__/
+
 # Tex and TexStudio things
 *.aux
 *.glo
