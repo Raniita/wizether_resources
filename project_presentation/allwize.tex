@@ -7,6 +7,13 @@
 \usepackage [hidelinks]{hyperref}
 \usepackage[usenames,dvipsnames]{xcolor}
 
+%%PACKAGES FOR COVER PAGE%%
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{anyfontsize}
+\usepackage{sectsty}
+
 %%SETUP FOR PDF PROPERTIES%%
 \hypersetup{
 	pdftitle={Hackathon AllWize: WizeTher},
@@ -26,52 +33,161 @@
 \begin{document}
 	\selectlanguage{spanish}
 	
-	%centrar titulo y autores
-	
-	\title{\huge Hackathon AllWize \\ \LARGE \textit{WizeTher}\\}
-	\author{\small Enrique Fernández Sánchez \\ \small Lucía Francoso Fernández}
+%% COVER PAGE %%
 
-	%quitar numeracion de la portada
+\pagestyle{empty}
+
+\begin{tikzpicture}[overlay,remember picture]
 	
-	%% EDITAR PARA SEGUIMIENTO DE VERSIONES
-	%\date{Revisión 19 Febrero 2021}
+	% Background color
+	\fill[
+	black!2]
+	(current page.south west) rectangle (current page.north east);
 	
-	\maketitle
+	% Rectangles
+	\shade[
+	left color=Dandelion, 
+	right color=Dandelion!40,
+	transform canvas ={rotate around ={45:($(current page.north west)+(0,-6)$)}}] 
+	($(current page.north west)+(0,-6)$) rectangle ++(9,1.5);
 	
+	\shade[
+	left color=lightgray,
+	right color=lightgray!50,
+	rounded corners=0.75cm,
+	transform canvas ={rotate around ={45:($(current page.north west)+(.5,-10)$)}}]
+	($(current page.north west)+(0.5,-10)$) rectangle ++(15,1.5);
+	
+	\shade[
+	left color=lightgray,
+	rounded corners=0.3cm,
+	transform canvas ={rotate around ={45:($(current page.north west)+(.5,-10)$)}}] ($(current page.north west)+(1.5,-9.55)$) rectangle ++(7,.6);
+	
+	\shade[
+	left color=orange!80,
+	right color=orange!60,
+	rounded corners=0.4cm,
+	transform canvas ={rotate around ={45:($(current page.north)+(-1.5,-3)$)}}]
+	($(current page.north)+(-1.5,-3)$) rectangle ++(9,0.8);
+	
+	\shade[
+	left color=red!80,
+	right color=red!80,
+	rounded corners=0.9cm,
+	transform canvas ={rotate around ={45:($(current page.north)+(-3,-8)$)}}] ($(current page.north)+(-3,-8)$) rectangle ++(15,1.8);
+	
+	\shade[
+	left color=orange,
+	right color=Dandelion,
+	rounded corners=0.9cm,
+	transform canvas ={rotate around ={45:($(current page.north west)+(4,-15.5)$)}}]
+	($(current page.north west)+(4,-15.5)$) rectangle ++(30,1.8);
+	
+	\shade[
+	left color=RoyalBlue,
+	right color=Emerald,
+	rounded corners=0.75cm,
+	transform canvas ={rotate around ={45:($(current page.north west)+(13,-10)$)}}]
+	($(current page.north west)+(13,-10)$) rectangle ++(15,1.5);
+	
+	\shade[
+	left color=lightgray,
+	rounded corners=0.3cm,
+	transform canvas ={rotate around ={45:($(current page.north west)+(18,-8)$)}}]
+	($(current page.north west)+(18,-8)$) rectangle ++(15,0.6);
+	
+	\shade[
+	left color=lightgray,
+	rounded corners=0.4cm,
+	transform canvas ={rotate around ={45:($(current page.north west)+(19,-5.65)$)}}]
+	($(current page.north west)+(19,-5.65)$) rectangle ++(15,0.8);
+	
+	\shade[
+	left color=OrangeRed,
+	right color=red!80,
+	rounded corners=0.6cm,
+	transform canvas ={rotate around ={45:($(current page.north west)+(20,-9)$)}}] 
+	($(current page.north west)+(20,-9)$) rectangle ++(14,1.2);
+	
+	% Year
+	\draw[ultra thick,gray]
+	($(current page.center)+(5,2)$) -- ++(0,-3cm) 
+	node[
+	midway,
+	left=0.25cm,
+	text width=5cm,
+	align=right,
+	black!75
+	]
+	{
+		{\fontsize{18}{30} \selectfont \bf HACKATHON \\[10pt] ALLWIZE}
+	} 
+	node[
+	midway,
+	right=0.25cm,
+	text width=6cm,
+	align=left,
+	orange]
+	{
+		{\fontsize{50}{86.4} \selectfont 2021}
+	};
+	
+	% Title
+	\node[align=center] at ($(current page.center)+(0,-5)$) 
+	{
+		{\fontsize{60}{72} \selectfont {{WizeTher}}} \\[1.5cm]
+		{\fontsize{15}{19.2} \selectfont \textcolor{orange}{ \bf Enrique Fernández Sánchez}}\\[3pt]
+		{\fontsize{15}{19.2} \selectfont \textcolor{orange}{ \bf Lucía Francoso Fernández}}\\[3pt]
+	};
+
+	\end{tikzpicture}
+
 	\pagebreak
 	
+%% END COVER PAGE %%
+
 	\tableofcontents
 	
 	\pagebreak
 	
 	% https://github.com/AllWize/allwize-training/tree/master/videos
-	\section{Context. LPWAN}
-	\noindent En el sentido de palabras topics, se mezcla en general lo que tiene que ver con Smar Citys, I4.0, IoT... Pero lo más importante es tener en claro lo que queremos solucionar. Es importante centrar el objetivo para solventar un problema. Necesidades/problemas --> soluciones específicas.
 	
-	\noindent IoT tiene origen en sensores meteorológicos, información remota, etc.
+	%%INTRO, CONTEXTUALIZACION%%
 	
-	\noindent LPWAN diseñadas para recurrir territorios muy grandes pero con bajo consumo. 
+	\section{Contexto del proyecto}
 	
-	\section{Retos}
+	\subsection{\textit{Smart City} y IoT}
+	
+	En un mundo cada vez más digitalizado, donde los problemas que genera el aumento de la población mundial son cada vez mayores, resulta de imperiosa necesidad conocer y extender el concepto de \textit{Smart City}. Podemos entender la \textit{Smart City}, o \textit{Ciudad Inteligente}, como una ciudad consciente, que en su toma de decisiones tiene en cuenta tanto factores sociales como medioambientales, sumados a los factores más técnicos que ya se vienen teniendo en cuenta.
+	\\
+	
+	Tanto es así que una \textit{Ciudad Inteligente} es capaz de identificar los diferentes problemas, de distintos ámbitos, seccionarlos y abarcarlos, con ayuda de la tecnología, para solventarlos sin olvidar que la solución tendrá un impacto social y medioambiental que tenemos que tener en cuenta. Así surge el concepto de IoT, donde la tecnología se fusiona con \textit{las cosas} a través de Internet (de ahí su nombre, \textit{Internet Of Things}), consiguiendo una poderosa herramienta para monitorizar aquello que sea necesario para la futura solución de un problema, recogiendo datos y subiéndolos a la nube, donde otras poderosísimas herramientas son capaces de realizar análisis, predicciones... de esos datos, reduciendo también el costo en tiempo y humano de toma y tratamiento de datos (o incluso, introduciéndolos, ya que quizá no existía monitorización, aunque fuera manual, de esos parámetros sin la introducción del IoT). Ejemplos de IoT hay muchos, y los encontramos en el sector automovilístico, científico, las telecomunicaciones, doméstico, industrial, etc. 
+	
+	\subsection{Análisis del reto planteado}
+	
+	En relación a lo anteriormente comentado, y una vez entendida la importancia de los conceptos expuestos, se presta realizar un análisis del reto planteado en esta hackathon, donde se pone de manifiesto que la solución que debemos aportar debe girar en torno a la calidad ambiental. Por lo tanto, lo primero que hay que hacer es estudiar qué existe en tanto a soluciones que mejoren la calidad ambiental en general y en particular, en la ciudad de Cartagena. \\
+	
+	Sea cual sea la solución planteada finalmente, no hay que olvidar que, lo más importante, es tener en claro lo que queremos solucionar, definir bien nuestro objetivo para solventar el problema, ya que cada problema, según la filosofía que impera en la \textit{Smart City}, necesita una solución específica. Asimismo, la solución debe contar con una serie de características para que sea una buena solución (a ser posible, debe procurarse que todas o la mayoría estén contempladas a la hora de desarrollar el prototipo de la solución). Estas suponen un reto en si mismo, ya que definir un producto o una idea es complicado; así pues, las enumeramos en el siguiente apartado.
+	
+%	\noindent IoT tiene origen en sensores meteorológicos, información remota, etc.
+	
+%	\noindent LPWAN diseñadas para recurrir territorios muy grandes pero con bajo consumo. 
+	
+	\subsubsection{Retos a conseguir}
 	\begin{itemize}
-		\item Security. Evitar MiM. Uso de TLS. 
-		\item Autonomy. No cambiar baterías, o si las cambias que sea con un ciclo mayor. Búsqueda de duración de baterías de 10 años o que hagan harvesting de luz solar.
-		\item Conectivity.
-		\item Interoperability
-		\item Awareness. Privacidad.
-		\item Big data. Recopilación de datos. Solo recogemos la información necesaria.
-		\item Business model. Monetización y sostenibilidad de la aplicación. \textbf{importante}
-		\item Scalability. Escalabilidad de la solución. Optimiazción.
+		\item \textbf{Seguridad}. Evitar MiM. Uso de TLS. 
+		\item \textbf{Autonomía}. No cambiar baterías, o si las cambias que sea con un ciclo mayor. Búsqueda de duración de baterías de 10 años o que hagan harvesting de luz solar.
+		\item \textbf{Conectividad}.
+		\item \textbf{Interoperabilidad}. Un sistema capaz de comunicarse con otros sistemas (mismas o diferentes tecnologías).
+		\item \textbf{Conocimiento y consciencia}. Conocer la naturaleza de los datos que se necesita recabar, recopilar sólo los necesarios y asegurar la privacidad de los mismos.
+		\item \textbf{\textit{Big data}}. Recopilación de datos. Como se ha mencionado en el apartado anterior, solo la información necesaria.
+		\item \textbf{Modelo de negocio}. Monetización y sostenibilidad de la aplicación.
+		\item \textbf{Escalabilidad}. Escalabilidad de la solución. Optimización de la misma.
 	\end{itemize}
 
-	\section{Landscape}
-	\noindent Importante ver las diferentes diferenciaciones en niveles (verticales y horizontales).
-	
-	% https://46eybw2v1nh52oe80d3bi91u-wpengine.netdna-ssl.com/wp-content/uploads/2016/03/Internet-of-Things-2016.png
-	
 	\pagebreak
-	\section{Caja del hackathon.}
-	\subsection{Placas controladoras.}
+	\subsubsection{Hardware proporcionado en la hackathon}
+	\textit{Placas controladoras}
 	\begin{itemize}
 		\item AllWize K2. Arduino SAMD. 
 		\item Carrier board para K2 (sin batería).
@@ -81,7 +197,7 @@
 		\item x2 Cables micro USB
 		\item Cables grove
 	\end{itemize}
-	\subsection{Sensores incluidos.}
+	\textit{Sensores incluidos}
 	\begin{itemize}
 		\item Multichannel Gas Sensor v2. I2C. 4 Variables.
 		
@@ -108,14 +224,25 @@
 		\item Sound sensor.
 	\end{itemize}
 
-	\section[Identificación de necesidades]{Identificación de necesidades}
+	\subsection[Identificación de necesidades]{Identificación de necesidades}
 	
 	Una vez analizado el material que se nos ha proporcionado, y reflexionado acerca de la tecnología a emplear (en este caso, Wize), el siguiente paso fue hacer una investigación acerca del OpenData que ofrece el Ayuntamiento de Cartagena, así como de posibles líneas futuras que ha manifestado un interés en abarcar en cuanto al empleo de soluciones IoT con el objetivo de conseguir suficientes datos para toma de decisiones que conlleven una mejora en la calidad ambiental. \\
 	
-	\subsection{Calidad del aire}
+	Dentro del 		\href{https://www.cartagena.es/plantillas/14b.asp?pt_idpag=1431}{Portal de Transparencia del Ayto de Cartagena (Ciudad Sostenible)}, en tanto a calidad ambiental, encontramos:
 	
-	Así pues, encontramos un dashboard donde se reflejan los datos recopilados por diferentes estaciones, dentro de la zona del campo de Cartagena, relacionados con la calidad del aire. El link de acceso es el siguiente: 
-	\href{https://www.cartagena.es/calidad_aire.asp}{Calidad del Aire (Campo de Cartagena)}. Dichas estaciones son, o se encuentran en: 
+		\begin{itemize}
+		\item El apartado \textit{Infraestructuras}, dentro del cual están los subapartados: agua potable, agua reciclada y reutilizada, e impactos ambientales.
+		\item El apartado \textit{Desarrollo sostenible}, dentro del cual están los subapartados: gases de efecto invernadero, niveles de calidad del aire, medio natural y mapa de ruidos.
+	\end{itemize} 
+	
+	Visualizando el contenido de dichos apartados, nos dimos cuenta de que sólo el subapartado 	\href{https://www.cartagena.es/calidad_aire.asp}{\textit{Calidad del Aire (Campo de Cartagena)}} está actualizadándose todos los días. En \href{https://urbanismo.cartagena.es/PortalUrbanismo/Paginas/65 en urbanismo no tienen informes ambientales}{\textit{Mapa de ruidos}} no conseguimos visualizar fechas en los documentos generados. Destacamos un documentos PDF en el subapartado \textit{Gases de efecto invernadero}, llamado  \textit{``Inventario de emisiones y plan de acción para la energía sostenible del municipio de Cartagena"}, que propone una serie de objetivos para el año 2020 de cara a reducir la huella de carbono en la ciudad de Cartagena; entendemos que es una preocupación por parte del Ayuntamiento el poner medios para dicha mejora. \\
+	
+%	Agua potable: un pdf de 2017 de una página
+%	Agua reciclada y reutilizada: un pdf de 2017 de una página
+%	Impactos ambientales: un pdf de una página "Iniciativas llevadas a cabo para mitigar los impactos ambientales de los productos y servicios"	
+%	Medio natural: %https://urbanismo.cartagena.es/medionatural/ no tiene na q ver, solo un pdf de 2010 sobre indicadores de sostenibilidad
+	
+	Centrándonos en el subapartado de \textit{Calidad del aire}, encontramos un dashboard donde se reflejan los datos recopilados por diferentes estaciones, dentro de la zona del campo de Cartagena, relacionados con la calidad del aire. Dichas estaciones son, o se encuentran en: 
 	
 	\begin{itemize}
 		\item Estación de Alumbres
@@ -124,36 +251,44 @@
 		\item Estación de Monpeán
 	\end {itemize}
 	
-	Por las gráficas que se muestran, podemos observar que cada estación realiza varias mediciones al día de diferentes gases contaminantes; a la vez que dicha gráfica con datos variantes a lo largo del día (de ayer, hoy o previsión para mañana, según seleccionemos), se muestra una tabla, donde intuimos que se muestra el valor medio de concentración de dicho gas contaminante en el aire. Sin embargo, no existe (o al menos, no hemos encontrado) un portal con OpenData donde descargar en archivo csv/excel estos datos, ni un histórico con datos recopilados en días anteriores al de la consulta (como decimos, sólo existe un dashboard con datos del día anterior, actual y previsión para el siguiente). \\
+	Por las gráficas que se muestran, podemos observar que cada estación realiza varias mediciones al día de diferentes gases contaminantes; a la vez que dicha gráfica con datos variantes a lo largo del día (de ayer, hoy o previsión para mañana, según seleccionemos), se muestra una tabla, donde intuimos que se muestra el valor medio de concentración de dicho gas contaminante en el aire. Sin embargo, no existe (o al menos, no hemos encontrado) un portal con \textit{OpenData} donde descargar en archivo csv/excel estos datos, ni un histórico con datos recopilados en días anteriores al de la consulta (como decimos, sólo existe un dashboard con datos del día anterior, actual y previsión para el siguiente). \\
 	
-	\subsection{Ruido}
+	\subsubsection{Ruido}
 	
-	% https://www.cartagena.es/plantillas/14b.asp?pt_idpag=1431
-		\href{https://www.cartagena.es/plantillas/14b.asp?pt_idpag=1431}{Portal de Transparencia del Ayto de Cartagena (Ciudad Sostenible)}
-	
-	Dentro del Portal de Transparencia del Ayto de Cartagena, en tanto a calidad ambiental, encontramos:
-	
-	\begin{itemize}
-		\item Dentro de infraestructuras, agua potable, agua reciclada y reutilizada, e impactos ambientales
-		\item Dentro de desarrollo sostenible, gases de efecto invernadero, niveles de calidad del aire (ya mencionado), medio natural, mapa de ruidos
-	\end{itemize} 
+	Como hemos comentado previamente, desconocemos la fecha de actualización de dichos datos. Además, no existe un \textit{OpenData} donde descargar históricos de datos en un archivo CSV o Excel; se nos proporcionan unos mapas de calor marcando los sitios donde hay más ruido a lo largo del día. Están disponibles a través de \href{https://www.cartagena.es/plantillas/14b.asp?pt_idpag=1431}{\textit{Acceso a mapas de ruido}}.
 
-Agua potable: un pdf de 2017 de una página
-Agua reciclada y reutilizada: un pdf de 2017 de una página
-Impactos ambientales: un pdf de una página "Iniciativas llevadas a cabo para mitigar los impactos ambientales de los productos y servicios"
-
-Gases de efecto invernadero: un pdf de 104 paginas "inventario de emisiones y plan de accion para la energia sostenible del municipio de Cartagena"
-
-Medio natural: %https://urbanismo.cartagena.es/medionatural/ no tiene na q ver, solo un pdf de 2010 sobre indicadores de sostenibilidad
-
-Mapa de ruidos: % https://urbanismo.cartagena.es/PortalUrbanismo/Paginas/65 en urbanismo no tienen informes ambientales
-
+	\subsection{Líneas futuras}
 		
-		\subsection{Líneas futuras}
-		
-		El ayuntamiento de Cartagena ha mostrado interés, desde la Concejalía de Ciudad Sostenible y Proyectos Europeos, por la monitorización de la calidad del aire, ruido y aforos peatonales.
-		
-		%https://murciaplaza.com/cartagena-estudia-la-calidad-del-aire-ruidos-y-aforos-para-reducir-el-impacto-climatico-y-la-movilidad-urbana
-		
-	
+		En cuanto a proyectos futuros en relación a la calidad ambiental en la ciudad de Cartagena, hemos podido leer que el ayuntamiento de Cartagena ha mostrado interés, desde la Concejalía de Ciudad Sostenible y Proyectos Europeos, por la monitorización de la calidad del aire, ruido y aforos peatonales (\href{https://murciaplaza.com/cartagena-estudia-la-calidad-del-aire-ruidos-y-aforos-para-reducir-el-impacto-climatico-y-la-movilidad-urbana}{Monitorización calidad aire, ruido y aforos (Ayto Cartagena)})
+
+\section{Solución planteada: \textit{WizeTher}}
+
+Una vez hemos visto qué existe en la ciudad de Cartagena en tanto a calidad ambiental, y entendida la tecnología que debemos usar para esta hackathon, definimos \textit{WizeTher}. El nombre es el resultado de la combinación de las palabras \textit{Wize} y \textit{Weather}, la tecnología radio que usa y el resumen de su funcionalidad principal. 
+
+\subsection{Qué es} %necesidades que cubre
+
+\textit{WizeTher} es una estación meteorológica capaz de recoger datos sobre:
+
+\begin{itemize}
+	\item Temperatura
+	\item Humedad
+	\item Presión atmosférica
+	\item Ruido
+	\item Calidad del aire
+\end{itemize}
+
+Esta solución se ha pensado con el objetivo concreto de , es decir, recoger  datos, subirlos a la nube y en una plataforma web mostrarlos en gráficas y permitir su consulta y descarga de manera totalmente gratuita, añadiendo valor y sirviendo de apoyo al despliegue que ya tiene hecho el Ayuntamiento de Cartagena para medir los niveles de calidad de aire y ruido, principalmente. 
+\subsection{Qué usa}
+\subsection{Plataforma web}
+Pensamos que para una mejor integración de la solución era necesaria la creación de una plataforma web, a la cual podemos acceder a través de \href{https://wizether.ranii.pro/}{Acceso a plataforma web de \textit{WizeTher}}
+\subsection{Open API}
+Como funcionalidad extra que vimos necesaria para complementar el estudio medioambiental, está la \textit{Open API}. Una API es... Al hacerla abierta al público se convierte en una \textit{Open API}, que también recuerda a \textit{Open Source}, que lo es el proyecto íntegro y lo ofrecemos bajo esa licencia, por lo que los datos que se descargan a través de la API son \textit{open}.
+\section{Resumen}
+
+\section{Fuentes complementarias}
+
+\section{Anexo: detalle técnico de la infraestructura de \textit{WizeTher}}
+
 \end{document}
+
+%https://46eybw2v1nh52oe80d3bi91u-wpengine.netdna-ssl.com/wp-content/uploads/2016/03/Internet-of-Things-2016.png
