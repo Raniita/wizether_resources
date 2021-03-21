@@ -175,8 +175,8 @@
 	
 	\subsubsection{Retos a conseguir}
 	\begin{itemize}
-		\item \textbf{Seguridad}. Evitar MiM. Uso de TLS. 
-		\item \textbf{Autonomía}. No cambiar baterías, o si las cambias que sea con un ciclo mayor. Búsqueda de duración de baterías de 10 años o que hagan harvesting de luz solar.
+		\item \textbf{Seguridad}. Cifrado en la comunicación, evitar el problema de \textit{Man in the Middle} (filtraciones o robo de datos por parte de terceras personas).
+		\item \textbf{Autonomía}. Equipos donde no se requiera cambiar las baterías, o si se cambian que sea cada mas tiempo. Búsqueda de duración de baterías de 10 años o que hagan harvesting de luz solar.
 		\item \textbf{Conectividad}.
 		\item \textbf{Interoperabilidad}. Un sistema capaz de comunicarse con otros sistemas (mismas o diferentes tecnologías).
 		\item \textbf{Conocimiento y consciencia}. Conocer la naturaleza de los datos que se necesita recabar, recopilar sólo los necesarios y asegurar la privacidad de los mismos.
@@ -463,7 +463,7 @@ Como funcionalidad extra que vimos necesaria para complementar el estudio medioa
 \begin{itemize}
 	\item \textbf{Fase 1: análisis e identificación de necesidades}
 	\item \textbf{Fase 2: definición del producto}
-	\item \textbf{Fase 3: programación de la placa controladora y gateway}
+	\item \textbf{Fase 3: programación de la placa controladora y gateway}. Programación en \textit{Arduino} para que la placa controladora de la estación lea la información de los sensores y construya el mensaje para enviarlo vía radio al gateway. A su vez, programamos la placa controladora del gateway para que reciba el mensaje y sepa enviarlo por MQTT posteriormente.
 	\item \textbf{Fase 4: despliegue de contenedores en servidor \textit{ranii.pro}}. Se requiere para alojar las diferentes aplicaciones y funcionalidades de las que consta \textit{WizeTher}.
 	\item  \textbf{Fase 5: programación MQTT y NodeRed}. Esta fase es necesaria para subir los datos a la nube, es decir, almacenarlos en la base de datos del servidor.
 	\item \textbf{Fase 6: creación plataforma web}. Esta tarea comienza en este punto pero continua durante las siguientes fases. La plataforma web se ha programado en \textit{Python}, y contiene las funcionalidades descritas en la sección 2, apartado \textit{Plataforma web}.
@@ -472,7 +472,14 @@ Como funcionalidad extra que vimos necesaria para complementar el estudio medioa
 	\item \textbf{Fase 9: creación de la \textit{OpenAPI}}. Implementación en la plataforma web de la funcionalidad \textit{OpenAPI}, la cual consiste en actuar como asistente de consultas a la base de datos del servidor a partir de los parámetros introducidos por el usuario (rango de fechas, sensor o estación en específico, etc). Además, durante esta fase, se añadió mapas interactivos creados con \textit{Leaflet} y \textit{Mapbox}, que aparecen en los apartados de la plataforma web llamados \textit{Nueva estación}, \textit{Nuevo gateway} y en la página web de inicio, apartado \textit{FAQ}.
 	\item \textbf{Fase 10: redacción de memoria y verificación del producto}. La redacción de la memoria se ha realizado usando \textit{LaTeX}. Durante la redacción de la misma, se ha ido revisando los pasos previos realizados y corrigiendo posibles \textit{bugs} detectados.
 \end{itemize}
+
 %%refuerzo de la idea de "retos"
+
+\noindent Por último, y retomando la lista de retos a conseguir con la introducción de una solución IoT para un determinado problema, hemos analizado si \textit{WizeTher} iría bien encaminado hacia la consecución de dichos retos: \\
+
+\begin{itemize}
+	\item 
+\end{itemize}
 
 %%outro
 
